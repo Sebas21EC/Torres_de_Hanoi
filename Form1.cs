@@ -19,12 +19,12 @@ namespace Torre_De_Hanoi
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.MovimentoPlato(torre_1, torre_2, pnl_2);
+            this.MovimentoPlato(torre_1, torre_2);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.MovimentoPlato(torre_1, torre_3, pnl_3);
+            this.MovimentoPlato(torre_1, torre_3);
             if (torre_3.Pila.Full())
             {
                 MessageBox.Show("Excelente trabajo", "Felicitaciones", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -36,16 +36,19 @@ namespace Torre_De_Hanoi
         {
             InitializeComponent();
             movimientos = 0;
+            btn_resolver.Enabled = false;
+            btn_paso_a_paso.Enabled = false;
+            btn_next.Enabled = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.MovimentoPlato(torre_2, torre_1, pnl_1);
+            this.MovimentoPlato(torre_2, torre_1);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.MovimentoPlato(torre_2, torre_3, pnl_3);
+            this.MovimentoPlato(torre_2, torre_3);
             if (torre_3.Pila.Full())
             {
                 MessageBox.Show("Excelente trabajo", "Felicitaciones", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -55,15 +58,14 @@ namespace Torre_De_Hanoi
 
         private void button6_Click(object sender, EventArgs e)
         {
-            this.MovimentoPlato(torre_3, torre_1, pnl_1);
+            this.MovimentoPlato(torre_3, torre_1);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.MovimentoPlato(torre_3, torre_2, pnl_2);
+            this.MovimentoPlato(torre_3, torre_2);
         }
 
-        Torres origen, destino, auxiliar;
         private void tmr_Recursivo_Tick(object sender, EventArgs e)
         {
             int nu_platos = Convert.ToInt32(txt_numero_platos.Text);
@@ -75,14 +77,14 @@ namespace Torre_De_Hanoi
 
                 if (numero_platos == 1)
                 {
-                    MovimentoPlato(origen, destino, pnl_3);
+                    MovimentoPlato(origen, destino);
                    
                 }
                 else
                 {
 
                     Hanoi(numero_platos - 1, origen, destino, auxiliar);
-                    MovimentoPlato(origen, destino, pnl_3);
+                    MovimentoPlato(origen, destino);
                     Hanoi(numero_platos - 1, auxiliar, origen, destino);
                 }
 
@@ -102,9 +104,59 @@ namespace Torre_De_Hanoi
 
         }
 
+        Torres[][] recorrido_platos;
+
         private void btn_next_Click(object sender, EventArgs e)
         {
-            tmr_Recursivo.Start();
+            btn_paso_a_paso.Enabled = false;
+            double pasos=Math.Pow(2,Convert.ToInt32(txt_numero_platos.Text))-1;
+            recorrido_platos = new Torres[(int)pasos][];
+            for (int i = 0; i < recorrido_platos.Length; i++)
+            {
+                recorrido_platos[i] = new Torres[2];
+            }
+            Hanoi(Convert.ToInt32(txt_numero_platos.Text), torre_1, torre_2, torre_3);
+            paso = 0;
+            btn_next.Enabled = true;
+            btn_resolver.Enabled = false;
+
+
+        }
+
+        private void btn_next_Click_1(object sender, EventArgs e)
+        {
+            MovimentoPlato(recorrido_platos[paso][0], recorrido_platos[paso][1]);
+            paso++;
+            if (torre_3.Pila.Full())
+            {
+                MessageBox.Show("Fin de juego");
+                paso = 0;
+            }
+        }
+
+        int paso = 0;
+       private void Hanoi(int numero_platos, Torres origen, Torres auxiliar, Torres destino)
+        {
+
+            if (numero_platos == 1)
+            {
+               
+                recorrido_platos[paso][0]=origen;
+                recorrido_platos[paso][1]=destino;
+                paso++;
+                //MovimentoPlato(origen, destino);
+
+            }
+            else
+            {
+
+                Hanoi(numero_platos - 1, origen, destino, auxiliar);
+                // MovimentoPlato(origen, destino);
+                recorrido_platos[paso][0] = origen;
+                recorrido_platos[paso][1] = destino;
+                paso++;
+                Hanoi(numero_platos - 1, auxiliar, origen, destino);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -113,6 +165,10 @@ namespace Torre_De_Hanoi
             pnl_2.Controls.Clear();
             pnl_3.Controls.Clear();
             movimientos = 0;
+            btn_resolver.Enabled = true;
+            btn_paso_a_paso.Enabled = true;
+            btn_next.Enabled = false;
+            paso = 0;
 
             int numero_platos = Convert.ToInt32(txt_numero_platos.Text);
 
@@ -133,9 +189,9 @@ namespace Torre_De_Hanoi
             Plato plato;
             //Torres
 
-            torre_1 = new Torres(puntos, new Pila(numero_platos), "Torre 1");
-            torre_2 = new Torres(puntos, new Pila(numero_platos), "Torre 2");
-            torre_3 = new Torres(puntos, new Pila(numero_platos), "Torre 3");
+            torre_1 = new Torres(puntos, new Pila(numero_platos), "Torre 1",pnl_1);
+            torre_2 = new Torres(puntos, new Pila(numero_platos), "Torre 2",pnl_2);
+            torre_3 = new Torres(puntos, new Pila(numero_platos), "Torre 3",pnl_3);
 
             for (int i = 0; i < numero_platos; i++)
             {
@@ -150,7 +206,7 @@ namespace Torre_De_Hanoi
 
         }
 
-        private void MovimentoPlato(Torres torre_auxiliar_1, Torres torre_auxiliar_2, Panel panel)
+        private void MovimentoPlato(Torres torre_auxiliar_1, Torres torre_auxiliar_2)
         {
 
             if (!torre_auxiliar_1.Pila.Empty())
@@ -160,7 +216,7 @@ namespace Torre_De_Hanoi
                 {
                     plato_auxiliar.Location = torre_auxiliar_2.Puntos[torre_auxiliar_2.Pila.Cima];
                     torre_auxiliar_2.Pila.Push(plato_auxiliar);
-                    panel.Controls.Add(plato_auxiliar);
+                    torre_auxiliar_2.Panel.Controls.Add(plato_auxiliar);
                 }
                 else
                 {
@@ -170,7 +226,7 @@ namespace Torre_De_Hanoi
                     {
                         plato_auxiliar.Location = torre_auxiliar_2.Puntos[torre_auxiliar_2.Pila.Cima];
                         torre_auxiliar_2.Pila.Push(plato_auxiliar);
-                        panel.Controls.Add(plato_auxiliar);
+                        torre_auxiliar_2.Panel.Controls.Add(plato_auxiliar);
 
                     }
                     else

@@ -46,6 +46,7 @@
             this.lbl_movimiento = new System.Windows.Forms.Label();
             this.tmr_Recursivo = new System.Windows.Forms.Timer(this.components);
             this.btn_resolver = new System.Windows.Forms.Button();
+            this.btn_paso_a_paso = new System.Windows.Forms.Button();
             this.btn_next = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -210,27 +211,38 @@
             // 
             // tmr_Recursivo
             // 
+            this.tmr_Recursivo.Interval = 3000;
             this.tmr_Recursivo.Tick += new System.EventHandler(this.tmr_Recursivo_Tick);
             // 
             // btn_resolver
             // 
-            this.btn_resolver.Location = new System.Drawing.Point(874, 15);
+            this.btn_resolver.Location = new System.Drawing.Point(770, 20);
             this.btn_resolver.Name = "btn_resolver";
             this.btn_resolver.Size = new System.Drawing.Size(75, 23);
             this.btn_resolver.TabIndex = 14;
-            this.btn_resolver.Text = "Resolver";
+            this.btn_resolver.Text = "Recursividad";
             this.btn_resolver.UseVisualStyleBackColor = true;
             this.btn_resolver.Click += new System.EventHandler(this.btn_resolver_Click);
             // 
+            // btn_paso_a_paso
+            // 
+            this.btn_paso_a_paso.Location = new System.Drawing.Point(923, 20);
+            this.btn_paso_a_paso.Name = "btn_paso_a_paso";
+            this.btn_paso_a_paso.Size = new System.Drawing.Size(51, 23);
+            this.btn_paso_a_paso.TabIndex = 15;
+            this.btn_paso_a_paso.Text = "Iniciar paso a paso";
+            this.btn_paso_a_paso.UseVisualStyleBackColor = true;
+            this.btn_paso_a_paso.Click += new System.EventHandler(this.btn_next_Click);
+            // 
             // btn_next
             // 
-            this.btn_next.Location = new System.Drawing.Point(970, 15);
+            this.btn_next.Location = new System.Drawing.Point(1000, 20);
             this.btn_next.Name = "btn_next";
-            this.btn_next.Size = new System.Drawing.Size(51, 23);
-            this.btn_next.TabIndex = 15;
+            this.btn_next.Size = new System.Drawing.Size(75, 23);
+            this.btn_next.TabIndex = 16;
             this.btn_next.Text = ">>";
             this.btn_next.UseVisualStyleBackColor = true;
-            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click_1);
             // 
             // frm_principal
             // 
@@ -238,6 +250,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 454);
             this.Controls.Add(this.btn_next);
+            this.Controls.Add(this.btn_paso_a_paso);
             this.Controls.Add(this.btn_resolver);
             this.Controls.Add(this.lbl_movimiento);
             this.Controls.Add(this.label3);
@@ -280,6 +293,7 @@
         private System.Windows.Forms.Label lbl_movimiento;
         private System.Windows.Forms.Timer tmr_Recursivo;
         private System.Windows.Forms.Button btn_resolver;
+        private System.Windows.Forms.Button btn_paso_a_paso;
         private System.Windows.Forms.Button btn_next;
     }
 }
