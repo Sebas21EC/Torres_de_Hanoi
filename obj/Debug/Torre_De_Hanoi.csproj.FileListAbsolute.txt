@@ -1,0 +1,11 @@
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\bin\Debug\Torre_De_Hanoi.exe.config
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\bin\Debug\Torre_De_Hanoi.exe
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\bin\Debug\Torre_De_Hanoi.pdb
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.csproj.AssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.frm_principal.resources
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.Properties.Resources.resources
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.csproj.GenerateResource.cache
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.exe
+C:\Users\User\Documents\Visual Studio 2022\Torre_De_Hanoi\Torre_De_Hanoi\obj\Debug\Torre_De_Hanoi.pdb
