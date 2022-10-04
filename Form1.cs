@@ -66,6 +66,8 @@ namespace Torre_De_Hanoi
         private void button1_Click(object sender, EventArgs e)
         {
             pnl_1.Controls.Clear();
+            pnl_2.Controls.Clear();
+            pnl_3.Controls.Clear();
 
             int numero_platos = Convert.ToInt32(txt_numero_platos.Text);
 
