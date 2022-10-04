@@ -63,11 +63,56 @@ namespace Torre_De_Hanoi
             this.MovimentoPlato(torre_3, torre_2, pnl_2);
         }
 
+        Torres origen, destino, auxiliar;
+        private void tmr_Recursivo_Tick(object sender, EventArgs e)
+        {
+            int nu_platos = Convert.ToInt32(txt_numero_platos.Text);
+
+            Hanoi(nu_platos, torre_1, torre_2, torre_3);
+
+            void Hanoi(int numero_platos, Torres origen, Torres auxiliar, Torres destino)
+            {
+
+                if (numero_platos == 1)
+                {
+                    MovimentoPlato(origen, destino, pnl_3);
+                   
+                }
+                else
+                {
+
+                    Hanoi(numero_platos - 1, origen, destino, auxiliar);
+                    MovimentoPlato(origen, destino, pnl_3);
+                    Hanoi(numero_platos - 1, auxiliar, origen, destino);
+                }
+
+                if (torre_3.Pila.Full())
+                {
+                    tmr_Recursivo.Stop();
+                    tmr_Recursivo.Enabled = false;
+                }
+            }
+
+            MessageBox.Show("Excelente...");
+        }
+
+        private void btn_resolver_Click(object sender, EventArgs e)
+        {
+            tmr_Recursivo.Start();
+
+        }
+
+        private void btn_next_Click(object sender, EventArgs e)
+        {
+            tmr_Recursivo.Start();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             pnl_1.Controls.Clear();
             pnl_2.Controls.Clear();
             pnl_3.Controls.Clear();
+            movimientos = 0;
 
             int numero_platos = Convert.ToInt32(txt_numero_platos.Text);
 
@@ -105,7 +150,8 @@ namespace Torre_De_Hanoi
 
         }
 
-        private void MovimentoPlato(Torres torre_auxiliar_1, Torres torre_auxiliar_2, Panel panel) {
+        private void MovimentoPlato(Torres torre_auxiliar_1, Torres torre_auxiliar_2, Panel panel)
+        {
 
             if (!torre_auxiliar_1.Pila.Empty())
             {
@@ -140,6 +186,7 @@ namespace Torre_De_Hanoi
             }
 
             lbl_movimiento.Text = "Número de movimientos: " + (++movimientos);
+
 
         }
     }

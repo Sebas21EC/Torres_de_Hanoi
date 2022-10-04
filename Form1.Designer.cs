@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txt_numero_platos = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pnl_1 = new System.Windows.Forms.Panel();
@@ -43,12 +44,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_movimiento = new System.Windows.Forms.Label();
+            this.tmr_Recursivo = new System.Windows.Forms.Timer(this.components);
+            this.btn_resolver = new System.Windows.Forms.Button();
+            this.btn_next = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_numero_platos
             // 
             this.txt_numero_platos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_numero_platos.Location = new System.Drawing.Point(340, 12);
+            this.txt_numero_platos.Location = new System.Drawing.Point(225, 12);
             this.txt_numero_platos.Name = "txt_numero_platos";
             this.txt_numero_platos.Size = new System.Drawing.Size(100, 26);
             this.txt_numero_platos.TabIndex = 0;
@@ -56,7 +60,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(473, 15);
+            this.button1.Location = new System.Drawing.Point(421, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -198,17 +202,43 @@
             // lbl_movimiento
             // 
             this.lbl_movimiento.AutoSize = true;
-            this.lbl_movimiento.Location = new System.Drawing.Point(688, 20);
+            this.lbl_movimiento.Location = new System.Drawing.Point(567, 20);
             this.lbl_movimiento.Name = "lbl_movimiento";
             this.lbl_movimiento.Size = new System.Drawing.Size(132, 13);
             this.lbl_movimiento.TabIndex = 13;
             this.lbl_movimiento.Text = "Número de movimientos: 0";
+            // 
+            // tmr_Recursivo
+            // 
+            this.tmr_Recursivo.Tick += new System.EventHandler(this.tmr_Recursivo_Tick);
+            // 
+            // btn_resolver
+            // 
+            this.btn_resolver.Location = new System.Drawing.Point(874, 15);
+            this.btn_resolver.Name = "btn_resolver";
+            this.btn_resolver.Size = new System.Drawing.Size(75, 23);
+            this.btn_resolver.TabIndex = 14;
+            this.btn_resolver.Text = "Resolver";
+            this.btn_resolver.UseVisualStyleBackColor = true;
+            this.btn_resolver.Click += new System.EventHandler(this.btn_resolver_Click);
+            // 
+            // btn_next
+            // 
+            this.btn_next.Location = new System.Drawing.Point(970, 15);
+            this.btn_next.Name = "btn_next";
+            this.btn_next.Size = new System.Drawing.Size(51, 23);
+            this.btn_next.TabIndex = 15;
+            this.btn_next.Text = ">>";
+            this.btn_next.UseVisualStyleBackColor = true;
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
             // frm_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 454);
+            this.Controls.Add(this.btn_next);
+            this.Controls.Add(this.btn_resolver);
             this.Controls.Add(this.lbl_movimiento);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -248,6 +278,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_movimiento;
+        private System.Windows.Forms.Timer tmr_Recursivo;
+        private System.Windows.Forms.Button btn_resolver;
+        private System.Windows.Forms.Button btn_next;
     }
 }
 
